@@ -1,0 +1,30 @@
+{
+  "name": "smartnest-smart-home-platform",
+  "version": "1.0.0",
+  "description": "SmartNest — Enterprise Embedded Systems & IoT Smart Home Management Platform",
+  "private": true,
+  "license": "UNLICENSED",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "node backend/src/server.js",
+    "frontend": "node frontend/serve.js",
+    "dev": "node index.js",
+    "build": "npm run build --prefix frontend",
+    "test": "node --test tests/unit/*.test.js tests/integration/*.test.js",
+    "test:unit": "node --test tests/unit/*.test.js",
+    "test:integration": "node --test tests/integration/*.test.js",
+    "health": "node index.js --health"
+  },
+  "keywords": [
+    "smarthome",
+    "iot",
+    "embedded-systems",
+    "esp32",
+    "mqtt",
+    "matter",
+    "zigbee",
+    "home-automation"
+  ],
+  "author": "SmartNest Engineering Team"
+}

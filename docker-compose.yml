@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  smartnest:
+    build: .
+    container_name: smartnest-iot-platform
+    ports:
+      - "4005:4005"
+      - "3005:3005"
+    environment:
+      - NODE_ENV=production
+      - BACKEND_PORT=4005
+      - FRONTEND_PORT=3005
+    restart: unless-stopped

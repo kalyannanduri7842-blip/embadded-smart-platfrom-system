@@ -1,0 +1,12 @@
+{
+  "name": "smartnest-backend",
+  "version": "1.0.0",
+  "description": "SmartNest Embedded Systems & IoT Smart Home Management Platform Backend API Engine",
+  "private": true,
+  "license": "UNLICENSED",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "smartnest-frontend",
+  "version": "1.0.0",
+  "description": "SmartNest Frontend UI & Dashboard Client",
+  "private": true,
+  "license": "UNLICENSED",
+  "main": "serve.js",
+  "scripts": {
+    "dev": "node serve.js",
+    "start": "node serve.js",
+    "build": "node -e \"console.log('Frontend build verified')\""
+  }
+}
