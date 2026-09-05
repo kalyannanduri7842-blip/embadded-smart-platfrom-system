@@ -88,11 +88,14 @@ const server = http.createServer(async (req, res) => {
         totalConnectedDevices: totalDevs,
         onlineDevices: onlineDevs,
         offlineDevices: totalDevs - onlineDevs,
-        lowStockItems: lowStockCount,
         pendingOrders: db.orders.filter(o => o.status === 'pending').length,
         openComplaints: (db.maintenanceTickets || []).filter(t => t.status !== 'CLOSED').length,
         pendingInstallations: (db.installationRequests || []).filter(i => i.status !== 'COMPLETED').length
       });
+    }
+
+    if (pathname === '/api/shop/products' && method === 'GET') {
+      return sendJson(res, 200, { products: db.inventory });
     }
 
     // ----------------------------------------------------
