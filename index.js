@@ -1,66 +1,50 @@
 /**
- * SmartNest — Smart Home Management Platform
- * Master Application Entry Point & Unified Service Orchestrator
+ * SMARTNEST — Embedded Systems & IoT Smart Home Management Platform
+ * Unified Application Entry Point
  */
 
-const path = require('path');
-const { spawn, execSync } = require('child_process');
+'use strict';
 
-const args = process.argv.slice(2);
+console.log('======================================================================');
+console.log('⬡ SmartNest Embedded Systems & IoT Smart Home Platform');
+console.log('Environment: ' + (process.env.NODE_ENV || 'production'));
+console.log('Version: 1.0.0');
+console.log('======================================================================');
 
-// CLI Command: Run Test Suite
-if (args.includes('--test') || args.includes('-t')) {
-  console.log('🧪 Running SmartNest Automated Test Suite...\n');
-  try {
-    execSync('node --test tests/unit/*.test.js tests/integration/*.test.js', { stdio: 'inherit' });
-    process.exit(0);
-  } catch (err) {
-    process.exit(1);
-  }
+const services = {
+  EdgeGatewayService: require('./backend/src/services/edge_gateway_service'),
+  MqttBrokerProtocolService: require('./backend/src/services/mqtt_broker_protocol_service'),
+  ZigbeeZwaveMeshService: require('./backend/src/services/zigbee_zwave_mesh_service'),
+  TelemetryTimeSeriesService: require('./backend/src/services/telemetry_timeseries_service'),
+  ComplexEventAutomationService: require('./backend/src/services/complex_event_automation_service'),
+  EnergySubmeteringService: require('./backend/src/services/energy_submetering_service'),
+  FotaFirmwareUpdateService: require('./backend/src/services/fota_firmware_update_service'),
+  DeviceSecurityHsmService: require('./backend/src/services/device_security_hsm_service'),
+  ClimateHvacPidService: require('./backend/src/services/climate_hvac_pid_service'),
+  BiometricAccessControlService: require('./backend/src/services/biometric_access_control_service'),
+  CircadianLightingService: require('./backend/src/services/circadian_lighting_service'),
+  VideoRtspWebRtcService: require('./backend/src/services/video_rtsp_webrtc_service'),
+  WarehouseInventoryService: require('./backend/src/services/warehouse_inventory_service'),
+  OrderFulfillmentTechnicianService: require('./backend/src/services/order_fulfillment_technician_service'),
+  OccupancyGeofencingService: require('./backend/src/services/occupancy_geofencing_service'),
+  WaterManagementLeakService: require('./backend/src/services/water_management_leak_service'),
+  SolarBatteryMicrogridService: require('./backend/src/services/solar_battery_microgrid_service'),
+  EmergencySafetyHazardService: require('./backend/src/services/emergency_safety_hazard_service'),
+  VoiceNluIntentService: require('./backend/src/services/voice_nlu_intent_service'),
+  PredictiveMaintenanceMtbfService: require('./backend/src/services/predictive_maintenance_mtbf_service')
+};
+
+function startServer(port = 3000) {
+  process.env.PORT = String(port);
+  const server = require('./backend/src/server');
+  return server;
 }
 
-// CLI Command: Health Check
-if (args.includes('--health')) {
-  console.log('⬡ SmartNest IoT Management System Health: OPERATIONAL');
-  console.log('Backend REST Engine: Port 4010 (Active)');
-  console.log('Frontend Web Portal: Port 3010 (Active)');
-  console.log('ESP32 Mesh Simulator: Online (Matter 1.2 / Zigbee 3.0)');
-  process.exit(0);
+if (require.main === module) {
+  startServer(process.env.PORT || 3000);
 }
 
-console.log('================================================================');
-console.log('  ⬡ SmartNest — Embedded Systems & IoT Smart Home Platform');
-console.log('================================================================');
-console.log('Starting Backend IoT Gateway Engine on port 4010...');
-console.log('Starting Frontend Web Application on port 3010...');
-
-const backendServerPath = path.join(__dirname, 'backend', 'src', 'server.js');
-const frontendServerPath = path.join(__dirname, 'frontend', 'serve.js');
-
-const backend = spawn('node', [backendServerPath], {
-  stdio: 'inherit',
-  shell: true,
-  env: { ...process.env, PORT: process.env.BACKEND_PORT || '4010' }
-});
-
-const frontend = spawn('node', [frontendServerPath], {
-  stdio: 'inherit',
-  shell: true,
-  env: { ...process.env, PORT: process.env.FRONTEND_PORT || '3010' }
-});
-
-backend.on('error', err => console.error('Backend process error:', err));
-frontend.on('error', err => console.error('Frontend process error:', err));
-
-process.on('SIGINT', () => {
-  console.log('\nShutting down SmartNest services gracefully...');
-  backend.kill('SIGINT');
-  frontend.kill('SIGINT');
-  process.exit(0);
-});
-
-process.on('SIGTERM', () => {
-  backend.kill('SIGTERM');
-  frontend.kill('SIGTERM');
-  process.exit(0);
-});
+module.exports = {
+  services,
+  startServer
+};

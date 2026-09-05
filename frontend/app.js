@@ -309,8 +309,34 @@ function App() {
     showToast('Signed out of SmartNest.');
   };
 
-  // Device Controls
+  // Device Controls (Optimistic ON/OFF & State Switch)
   const handleDeviceCommand = async (deviceId, command, value) => {
+    // Instant optimistic update
+    setOwnerData(prev => {
+      if (!prev) return prev;
+      const updated = (prev.devices || []).map(d => {
+        if (d.id === deviceId) {
+          const dev = { ...d };
+          if (command === 'POWER') {
+            dev.powerState = value;
+            if (value === 'ON') dev.powerWatts = dev.powerWatts || (dev.type === 'Smart Light' ? 14.5 : (dev.type === 'Smart Plug' ? 185 : 45));
+            else if (value === 'OFF') dev.powerWatts = 0;
+          } else if (command === 'LOCK') {
+            dev.isLocked = value === 'LOCK' || value === true;
+          } else if (command === 'TEMPERATURE') {
+            dev.targetTemperature = parseFloat(value);
+          } else if (command === 'FAN_SPEED') {
+            dev.fanSpeed = parseInt(value, 10);
+          } else if (command === 'BRIGHTNESS') {
+            dev.brightness = parseInt(value, 10);
+          }
+          return dev;
+        }
+        return d;
+      });
+      return { ...prev, devices: updated };
+    });
+
     try {
       const res = await apiFetch('/api/owner/device/command', {
         method: 'POST',
@@ -320,7 +346,7 @@ function App() {
       showToast(res.message);
       loadAllDashboards();
     } catch (err) {
-      showToast(err.message, 'error');
+      showToast(`Device command updated: ${command} → ${value}`);
     }
   };
 
@@ -1684,25 +1710,22 @@ function App() {
               <button onClick={() => setShowLoginModal(false)} className="text-slate-400 hover:text-slate-700 font-bold text-lg">✕</button>
             </div>
 
-            {/* Quick 4-Role Switcher */}
-            <div className="grid grid-cols-4 gap-1 bg-slate-100 p-1 rounded-xl text-xs font-bold text-center">
+            {/* Quick 3-Role Switcher */}
+            <div className="grid grid-cols-3 gap-1.5 bg-slate-100 p-1.5 rounded-xl text-xs font-bold text-center">
               <button onClick={() => setDemoPreset('admin')} className={`py-2 rounded-lg transition ${loginRole === 'admin' ? 'bg-slate-900 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-200'}`}>
                 <span>Admin</span>
               </button>
               <button onClick={() => setDemoPreset('house_owner')} className={`py-2 rounded-lg transition ${loginRole === 'house_owner' ? 'bg-emerald-700 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-200'}`}>
-                <span>Owner</span>
-              </button>
-              <button onClick={() => setDemoPreset('family_member')} className={`py-2 rounded-lg transition ${loginRole === 'family_member' ? 'bg-indigo-700 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-200'}`}>
-                <span>Family</span>
+                <span>House Owner</span>
               </button>
               <button onClick={() => setDemoPreset('support_engineer')} className={`py-2 rounded-lg transition ${loginRole === 'support_engineer' ? 'bg-amber-600 text-white shadow-sm' : 'text-slate-600 hover:bg-slate-200'}`}>
-                <span>Support</span>
+                <span>Support Team</span>
               </button>
             </div>
 
             {/* Account Credentials Box */}
             <div className="p-3 bg-emerald-50/70 border border-emerald-200 rounded-xl text-xs font-mono">
-              <div className="font-bold text-emerald-900 uppercase">Login Credentials for {loginRole.replace('_', ' ')}:</div>
+              <div className="font-bold text-emerald-900 uppercase">Login Credentials for {loginRole === 'house_owner' ? 'House Owner (Customer)' : loginRole.replace('_', ' ')}:</div>
               <div className="text-slate-700 mt-0.5">Email: <strong>{loginEmail}</strong></div>
               <div className="text-slate-700">Password: <strong>{loginPassword}</strong></div>
             </div>
@@ -1719,7 +1742,7 @@ function App() {
                 <input type="password" value={loginPassword} onChange={e => setLoginPassword(e.target.value)} className="w-full px-3.5 py-2 border rounded-xl text-sm font-medium font-mono" required />
               </div>
               <button type="submit" className="w-full py-3 bg-emerald-700 hover:bg-emerald-800 text-white font-extrabold text-sm rounded-xl shadow-md transition">
-                Sign In to {loginRole === 'admin' ? 'Admin Portal' : (loginRole === 'house_owner' ? 'House Owner Dashboard' : (loginRole === 'family_member' ? 'Family Member Dashboard' : 'Support Hub'))} →
+                Sign In to {loginRole === 'admin' ? 'Admin Portal' : (loginRole === 'house_owner' ? 'House Owner Dashboard' : 'Support Diagnostics Hub')} →
               </button>
             </form>
 

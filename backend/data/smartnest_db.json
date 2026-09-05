@@ -171,7 +171,7 @@
       "type": "Smart Light",
       "status": "online",
       "health": "ONLINE",
-      "powerState": "OFF",
+      "powerState": "ON",
       "brightness": 85,
       "powerWatts": 14.5,
       "warrantyStatus": "ACTIVE",
@@ -209,7 +209,7 @@
       "type": "Smart Fan",
       "status": "online",
       "health": "ONLINE",
-      "powerState": "OFF",
+      "powerState": "ON",
       "fanSpeed": 3,
       "powerWatts": 0,
       "warrantyStatus": "ACTIVE",
@@ -292,6 +292,41 @@
       "installationDate": "2026-01-16"
     },
     {
+      "id": "DEV-008",
+      "homeId": "HOME-001",
+      "roomId": "ROOM-103",
+      "roomName": "Kitchen",
+      "name": "Kitchen Exhaust Hood & Fan",
+      "type": "Smart Fan",
+      "status": "online",
+      "health": "ONLINE",
+      "powerState": "ON",
+      "fanSpeed": 2,
+      "powerWatts": 45,
+      "warrantyStatus": "ACTIVE",
+      "warrantyExpiry": "2028-01-16",
+      "manufacturer": "SmartNest AeroFlow",
+      "model": "SNA-EXH-400",
+      "installationDate": "2026-01-16"
+    },
+    {
+      "id": "DEV-009",
+      "homeId": "HOME-001",
+      "roomId": "ROOM-104",
+      "roomName": "Garage",
+      "name": "Garage Motorized Door Opener",
+      "type": "Smart Switch",
+      "status": "online",
+      "health": "ONLINE",
+      "powerState": "OFF",
+      "powerWatts": 0,
+      "warrantyStatus": "ACTIVE",
+      "warrantyExpiry": "2029-01-16",
+      "manufacturer": "LiftMaster Smart Relay",
+      "model": "LM-RELAY-100",
+      "installationDate": "2026-01-16"
+    },
+    {
       "id": "DEV-010",
       "homeId": "HOME-001",
       "roomId": "ROOM-106",
@@ -309,7 +344,43 @@
       "installationDate": "2026-01-16"
     },
     {
-      "id": "DEV-OWN-2717",
+      "id": "DEV-011",
+      "homeId": "HOME-001",
+      "roomId": "ROOM-105",
+      "roomName": "Garden",
+      "name": "Garden Pathway 12V Glow Lights",
+      "type": "Smart Light",
+      "status": "online",
+      "health": "ONLINE",
+      "powerState": "ON",
+      "brightness": 75,
+      "powerWatts": 38,
+      "warrantyStatus": "ACTIVE",
+      "warrantyExpiry": "2028-01-16",
+      "manufacturer": "SmartNest SolarLine",
+      "model": "SN-GLOW-12V",
+      "installationDate": "2026-01-16"
+    },
+    {
+      "id": "DEV-012",
+      "homeId": "HOME-001",
+      "roomId": "ROOM-101",
+      "roomName": "Balcony",
+      "name": "Balcony Warm Accent Lamp",
+      "type": "Smart Light",
+      "status": "online",
+      "health": "ONLINE",
+      "powerState": "ON",
+      "brightness": 80,
+      "powerWatts": 12,
+      "warrantyStatus": "ACTIVE",
+      "warrantyExpiry": "2028-01-16",
+      "manufacturer": "SmartNest Lumen Series",
+      "model": "SNL-E27-BALC",
+      "installationDate": "2026-01-16"
+    },
+    {
+      "id": "DEV-OWN-7734",
       "homeId": "HOME-001",
       "roomName": "Living Room",
       "name": "Study Room LED Panel",
@@ -321,7 +392,7 @@
       "powerWatts": 15,
       "warrantyStatus": "ACTIVE",
       "warrantyExpiry": "2028-09-01",
-      "installationDate": "2026-09-03"
+      "installationDate": "2026-09-05"
     }
   ],
   "sensors": [
@@ -332,12 +403,12 @@
       "roomName": "Living Room",
       "name": "Living Room Temp & Humidity Sensor",
       "type": "Temperature & Humidity",
-      "temperature": 25.2,
-      "humidity": 63.5,
+      "temperature": 24.8,
+      "humidity": 57.3,
       "batteryLevel": 96,
       "status": "online",
       "health": "ONLINE",
-      "lastUpdated": "2026-09-03T12:16:17.576Z"
+      "lastUpdated": "2026-09-05T06:21:26.237Z"
     },
     {
       "id": "SENS-002",
@@ -350,7 +421,7 @@
       "batteryLevel": 92,
       "status": "online",
       "health": "ONLINE",
-      "lastUpdated": "2026-09-03T11:09:28.423Z"
+      "lastUpdated": "2026-09-05T06:12:36.391Z"
     },
     {
       "id": "SENS-003",
@@ -364,7 +435,7 @@
       "batteryLevel": 100,
       "status": "online",
       "health": "ONLINE",
-      "lastUpdated": "2026-09-03T11:09:28.423Z"
+      "lastUpdated": "2026-09-05T06:12:36.391Z"
     },
     {
       "id": "SENS-007",
@@ -373,13 +444,13 @@
       "roomName": "Living Room",
       "name": "Whole Home Energy Sub-Meter",
       "type": "Energy Meter",
-      "livePowerWatts": 963.8,
+      "livePowerWatts": 1713.7,
       "energyTodayKwh": 8.42,
       "voltage": 230.1,
       "currentAmps": 3.65,
       "status": "online",
       "health": "ONLINE",
-      "lastUpdated": "2026-09-03T12:16:17.576Z"
+      "lastUpdated": "2026-09-05T06:21:26.237Z"
     }
   ],
   "permissions": [
@@ -408,27 +479,30 @@
       "homeId": "HOME-001",
       "userId": "USR-FAM-02",
       "userName": "Rohan Sharma",
-      "canControlLights": false,
+      "canControlLights": true,
       "canControlAC": false,
-      "canControlFans": false,
+      "canControlFans": true,
       "canControlPlugs": false,
-      "canViewSensors": false,
+      "canViewSensors": true,
       "canControlLocks": false,
-      "allowedDeviceIds": []
+      "allowedDeviceIds": [
+        "DEV-001",
+        "DEV-003",
+        "DEV-007"
+      ]
     }
   ],
   "automations": [
     {
       "id": "AUTO-001",
       "homeId": "HOME-001",
-      "name": "Auto Cool when Temp High",
+      "name": "High Temperature Auto-Cool",
       "triggerType": "TEMPERATURE_ABOVE",
-      "triggerValue": 28,
+      "triggerValue": "28.0",
       "targetDeviceId": "DEV-002",
       "action": "TURN_ON_AC",
-      "targetTemp": 23,
       "isEnabled": true,
-      "lastTriggered": "2026-09-02T14:20:00Z"
+      "lastTriggered": null
     },
     {
       "id": "AUTO-002",
@@ -558,6 +632,141 @@
       "warranty": "3 Years Doorlock Warranty",
       "status": "IN_STOCK",
       "isLowStock": false
+    },
+    {
+      "id": "PROD-008",
+      "name": "Matter In-Wall Dual Relay Smart Switch",
+      "category": "Controllers",
+      "sku": "SN-RELAY-2CH",
+      "price": 1799,
+      "stockQuantity": 25,
+      "minStockLevel": 5,
+      "description": "Hidden in-wall switch module making conventional light switches smart with Zigbee & Matter.",
+      "requiresInstallation": true,
+      "installationFee": 250,
+      "warranty": "2 Years Replacement",
+      "status": "IN_STOCK",
+      "isLowStock": false
+    },
+    {
+      "id": "PROD-009",
+      "name": "Motorized Smart Curtain & Blind Robot",
+      "category": "Controllers",
+      "sku": "SN-CURTAIN-ROB",
+      "price": 3499,
+      "stockQuantity": 15,
+      "minStockLevel": 3,
+      "description": "Automated track-mounted curtain robot with solar charging and sunrise/sunset schedules.",
+      "requiresInstallation": true,
+      "installationFee": 300,
+      "warranty": "2 Years Manufacturer",
+      "status": "IN_STOCK",
+      "isLowStock": false
+    },
+    {
+      "id": "PROD-010",
+      "name": "Smart 2K Wi-Fi Video Doorbell with Chime",
+      "category": "Security",
+      "sku": "SN-VBELL-2K",
+      "price": 4999,
+      "stockQuantity": 10,
+      "minStockLevel": 4,
+      "description": "2K HDR video doorbell with 2-way audio, AI human detection, and night vision.",
+      "requiresInstallation": true,
+      "installationFee": 350,
+      "warranty": "2 Years Warranty",
+      "status": "IN_STOCK",
+      "isLowStock": false
+    },
+    {
+      "id": "PROD-011",
+      "name": "Smart Combustible Gas & Methane Leak Sensor",
+      "category": "Sensors",
+      "sku": "SNS-GAS-MQ4",
+      "price": 2199,
+      "stockQuantity": 16,
+      "minStockLevel": 5,
+      "description": "Kitchen LPG & methane gas leak alarm with auto-shutoff valve control trigger.",
+      "requiresInstallation": true,
+      "installationFee": 300,
+      "warranty": "2 Years Comprehensive",
+      "status": "IN_STOCK",
+      "isLowStock": false
+    },
+    {
+      "id": "PROD-012",
+      "name": "Whole-Home DIN-Rail Smart Energy Sub-Meter",
+      "category": "Energy Monitoring",
+      "sku": "SN-EMETER-DIN",
+      "price": 3899,
+      "stockQuantity": 9,
+      "minStockLevel": 4,
+      "description": "Bi-directional electrical panel sub-meter monitoring whole-house kWh, voltage, and power surges.",
+      "requiresInstallation": true,
+      "installationFee": 450,
+      "warranty": "3 Years Warranty",
+      "status": "IN_STOCK",
+      "isLowStock": false
+    },
+    {
+      "id": "PROD-013",
+      "name": "Smart Ceiling BLDC Fan Speed Controller",
+      "category": "Controllers",
+      "sku": "SN-FAN-REG5",
+      "price": 1999,
+      "stockQuantity": 22,
+      "minStockLevel": 6,
+      "description": "5-speed capacitive fan regulator with smooth modulation and Alexa/Home Assistant support.",
+      "requiresInstallation": true,
+      "installationFee": 250,
+      "warranty": "2 Years Replacement",
+      "status": "IN_STOCK",
+      "isLowStock": false
+    },
+    {
+      "id": "PROD-014",
+      "name": "Smart Flood & Water Leak Detection Sensor",
+      "category": "Sensors",
+      "sku": "SNS-WATER-IP67",
+      "price": 1299,
+      "stockQuantity": 28,
+      "minStockLevel": 6,
+      "description": "IP67 waterproof dual-probe flood sensor for kitchens, washing machines, and water heaters.",
+      "requiresInstallation": false,
+      "installationFee": 0,
+      "warranty": "2 Years Warranty",
+      "status": "IN_STOCK",
+      "isLowStock": false
+    },
+    {
+      "id": "PROD-015",
+      "name": "Universal Smart IR Blaster & AC Hub",
+      "category": "Climate",
+      "sku": "SN-IR-BLAST360",
+      "price": 1499,
+      "stockQuantity": 35,
+      "minStockLevel": 8,
+      "description": "360-degree infrared hub automating conventional ACs, TVs, and set-top boxes.",
+      "requiresInstallation": false,
+      "installationFee": 0,
+      "warranty": "1 Year Comprehensive",
+      "status": "IN_STOCK",
+      "isLowStock": false
+    },
+    {
+      "id": "PROD-016",
+      "name": "Smart Ambient RGB Symphony Floor Lamp",
+      "category": "Lighting",
+      "sku": "SNL-FLOOR-RGB",
+      "price": 2799,
+      "stockQuantity": 18,
+      "minStockLevel": 4,
+      "description": "1.4m standing corner LED floor lamp with dynamic music rhythm sync and scenes.",
+      "requiresInstallation": false,
+      "installationFee": 0,
+      "warranty": "2 Years Replacement",
+      "status": "IN_STOCK",
+      "isLowStock": false
     }
   ],
   "orders": [
@@ -653,50 +862,6 @@
   ],
   "maintenanceTickets": [
     {
-      "id": "MT-8416",
-      "homeId": "HOME-001",
-      "deviceId": "DEV-005",
-      "deviceName": "Master Bedroom Ambient Light",
-      "roomName": "Master Bedroom",
-      "reportedBy": {
-        "userId": "USR-OWN-01",
-        "name": "Rahul Sharma",
-        "role": "house_owner"
-      },
-      "problemType": "Device Not Working",
-      "description": "fbfdbdrrddrx",
-      "priority": "High",
-      "status": "PROCESSING",
-      "warrantyStatus": "ACTIVE",
-      "adminNotes": "Assigned to Support Engineering Team (Alex Thorne)",
-      "resolutionNotes": "Testing hardware telemetry & power draw",
-      "createdAt": "2026-09-03T12:01:13.538Z",
-      "updatedAt": "2026-09-03T12:05:10.140Z",
-      "resolvedAt": "2026-09-03T12:04:33.004Z"
-    },
-    {
-      "id": "MT-3213",
-      "homeId": "HOME-001",
-      "deviceId": "DEV-005",
-      "deviceName": "Master Bedroom Ambient Light",
-      "roomName": "Master Bedroom",
-      "reportedBy": {
-        "userId": "USR-OWN-01",
-        "name": "Rahul Sharma",
-        "role": "house_owner"
-      },
-      "problemType": "Device Not Working",
-      "description": "bbjnbjbj",
-      "priority": "High",
-      "status": "OPEN",
-      "warrantyStatus": "ACTIVE",
-      "adminNotes": "Assigned to Support Engineering Team (Alex Thorne)",
-      "resolutionNotes": "",
-      "createdAt": "2026-09-03T11:24:31.205Z",
-      "updatedAt": "2026-09-03T11:24:31.205Z",
-      "resolvedAt": null
-    },
-    {
       "id": "MT-1008",
       "homeId": "HOME-001",
       "deviceId": "DEV-005",
@@ -710,13 +875,13 @@
       "problemType": "Device Not Working",
       "description": "The light is not responding to toggle commands from the dashboard.",
       "priority": "High",
-      "status": "UNDER_REVIEW",
+      "status": "RESOLVED",
       "warrantyStatus": "ACTIVE",
       "adminNotes": "Field support team testing Zigbee channel 15 signal drift.",
-      "resolutionNotes": "Mesh router channel refreshed and new Zigbee bridge provisioned.",
+      "resolutionNotes": "Hardware verified and operational",
       "createdAt": "2026-09-03T10:20:00Z",
-      "updatedAt": "2026-09-03T11:45:00Z",
-      "resolvedAt": null
+      "updatedAt": "2026-09-05T06:14:41.144Z",
+      "resolvedAt": "2026-09-05T06:14:41.144Z"
     }
   ],
   "alerts": [
@@ -734,81 +899,26 @@
   ],
   "notifications": [
     {
-      "id": "NOTIF-1788437110140",
+      "id": "NOTIF-1788588881144",
       "homeId": "HOME-001",
       "userId": "USR-OWN-01",
       "recipientRole": "house_owner",
-      "title": "Support Team Update: Ticket #MT-8416",
-      "message": "Your complaint for Master Bedroom Ambient Light is now [PROCESSING]. Testing hardware telemetry & power draw",
-      "type": "SUPPORT",
-      "isRead": false,
-      "timestamp": "2026-09-03T12:05:10.140Z"
-    },
-    {
-      "id": "NOTIF-1788437109024",
-      "homeId": "HOME-001",
-      "userId": "USR-OWN-01",
-      "recipientRole": "house_owner",
-      "title": "Support Team Update: Ticket #MT-8416",
-      "message": "Your complaint for Master Bedroom Ambient Light is now [UNDER REVIEW]. Support engineer Alex Thorne reviewing Zigbee mesh & logs",
-      "type": "SUPPORT",
-      "isRead": false,
-      "timestamp": "2026-09-03T12:05:09.024Z"
-    },
-    {
-      "id": "NOTIF-1788437107601",
-      "homeId": "HOME-001",
-      "userId": "USR-OWN-01",
-      "recipientRole": "house_owner",
-      "title": "Support Team Update: Ticket #MT-8416",
-      "message": "Your complaint for Master Bedroom Ambient Light is now [UNDER REVIEW]. Support engineer Alex Thorne reviewing Zigbee mesh & logs",
-      "type": "SUPPORT",
-      "isRead": false,
-      "timestamp": "2026-09-03T12:05:07.601Z"
-    },
-    {
-      "id": "NOTIF-1788437080815",
-      "homeId": "HOME-001",
-      "userId": "USR-OWN-01",
-      "recipientRole": "house_owner",
-      "title": "Support Team Update: Ticket #MT-8416",
-      "message": "Your complaint for Master Bedroom Ambient Light is now [PROCESSING]. Diagnostics in progress",
-      "type": "SUPPORT",
-      "isRead": false,
-      "timestamp": "2026-09-03T12:04:40.815Z"
-    },
-    {
-      "id": "NOTIF-1788437073004",
-      "homeId": "HOME-001",
-      "userId": "USR-OWN-01",
-      "recipientRole": "house_owner",
-      "title": "Support Team Update: Ticket #MT-8416",
+      "title": "Support Team Update: Ticket #MT-1008",
       "message": "Your complaint for Master Bedroom Ambient Light is now [RESOLVED]. Hardware verified and operational",
       "type": "SUPPORT",
       "isRead": false,
-      "timestamp": "2026-09-03T12:04:33.004Z"
+      "timestamp": "2026-09-05T06:14:41.144Z"
     },
     {
-      "id": "NOTIF-1788436873538",
-      "homeId": "ALL",
-      "userId": "USR-SUP-01",
-      "recipientRole": "support_engineer",
-      "title": "New Support Ticket: #MT-8416",
-      "message": "Rahul Sharma reported [Device Not Working] on Master Bedroom Ambient Light. Dispatched to support queue.",
+      "id": "NOTIF-1788588880188",
+      "homeId": "HOME-001",
+      "userId": "USR-OWN-01",
+      "recipientRole": "house_owner",
+      "title": "Support Team Update: Ticket #MT-1008",
+      "message": "Your complaint for Master Bedroom Ambient Light is now [RESOLVED]. Hardware verified and operational",
       "type": "SUPPORT",
       "isRead": false,
-      "timestamp": "2026-09-03T12:01:13.538Z"
-    },
-    {
-      "id": "NOTIF-1788434671205",
-      "homeId": "ALL",
-      "userId": "USR-SUP-01",
-      "recipientRole": "support_engineer",
-      "title": "New Support Ticket: #MT-3213",
-      "message": "Rahul Sharma reported [Device Not Working] on Master Bedroom Ambient Light. Dispatched to support queue.",
-      "type": "SUPPORT",
-      "isRead": false,
-      "timestamp": "2026-09-03T11:24:31.205Z"
+      "timestamp": "2026-09-05T06:14:40.188Z"
     },
     {
       "id": "NOTIF-001",
@@ -859,14 +969,13 @@
     }
   ],
   "settings": {
-    "gatewayPollIntervalSeconds": 3,
+    "gatewayPollIntervalSeconds": 5,
     "mqttBrokerUrl": "mqtt://mesh.smartnest.local:1883",
     "autoFirmwareOta": true,
-    "supportSlaHours": 12,
+    "supportSlaHours": 24,
     "emergencySmsAlerts": true,
     "adminEmail": "admin@smartnest.local",
     "meshProtocol": "Matter 1.2 / Zigbee 3.0",
-    "encryptionMode": "AES-128 Hardware Encrypted",
-    "updatedAt": "2026-09-03T11:10:43.011Z"
+    "encryptionMode": "AES-128 Hardware Encrypted"
   }
 }

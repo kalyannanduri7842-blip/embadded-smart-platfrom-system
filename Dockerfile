@@ -1,24 +1,26 @@
-# Multi-stage production container for SmartNest IoT Platform
-FROM node:20-alpine
+# Multi-stage Dockerfile for SmartNest Embedded IoT Smart Home Platform
+FROM node:20-alpine AS base
 
 WORKDIR /app
 
-# Copy root manifests
-COPY package.json ./
-COPY backend/package*.json ./backend/
-COPY frontend/package*.json ./frontend/
+# Install dependencies and build tools
+COPY package*.json ./
+RUN npm install --omit=dev || true
 
-# Copy full application source code
+# Copy full source tree
 COPY . .
 
-EXPOSE 4005
-EXPOSE 3005
+# Run build verification
+RUN npm run build
+
+# Expose backend API (3000) and frontend UI (5000)
+EXPOSE 3000 5000
 
 ENV NODE_ENV=production
-ENV BACKEND_PORT=4005
-ENV FRONTEND_PORT=3005
+ENV PORT=3000
 
+# Healthcheck
 HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
-  CMD node index.js --health
+  CMD node -e "require('http').get('http://127.0.0.1:3000/api/health', (r) => process.exit(r.statusCode === 200 ? 0 : 1));"
 
 CMD ["node", "index.js"]
